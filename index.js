@@ -1,6 +1,10 @@
 const express=require('express')
 const app= express();
 
+// app.use(express.urlencoded())
+// app.use(cookieParser())
+
+require('./confiq/mongoose')
 
 //set view engine for rendering views
 app.set('view engine','ejs')
