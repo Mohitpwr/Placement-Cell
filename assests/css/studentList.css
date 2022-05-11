@@ -1,0 +1,28 @@
+
+body{
+    box-sizing: border-box;
+    font-family: sans-serif;
+   }
+
+.form {
+    margin-left: 20%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-input input {
+    height: 40px;
+    width: 60%;
+    margin-bottom: 10px;
+    border-radius: 4px;
+
+    border: 1px solid;
+  }
+
+  #submitbutton:hover {
+    background-color: orange;
+  }
+
+  .list{
+    text-align: center;
+  }

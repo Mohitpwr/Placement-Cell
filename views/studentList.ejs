@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Students List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/studentList.css">
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/students/studentsList"><button class="btn btn-info" type="button"><h3>Students</h3></button></a>
+        <a class="navbar-brand" href="/interviews/interviewList"><button class="btn btn-info" type="button"><h3>Interviews</h3></button></a>
+        <a class="navbar-brand" href="#"><button class="btn btn-info" type="button"><h3>SignOut</h3></button></a>
+        
+    </div>
+  </nav>
+
+    <div class="head" style="margin-top: 20px">
+      <h2>Add Student</h2>
+      </div>
+      
+      <div class="form">
+        <form action="/students/studentsList" method="POST">
+          <div class="form-input">
+            <input type="text" name="name" placeholder="Student name" required />
+          </div>
+          <div class="form-input">
+            <input type="text" name="email" placeholder="Student email" required />
+          </div>
+          <div class="form-input">
+            <input type="text" name="batch" placeholder="Student Batch" required />
+          </div>
+          <div class="form-input">
+            <select class="form-input" name="status">
+              <optgroup label="Status" placeholder="Status">
+                <!-- <option name="" value="0">Status</option> -->
+                <option name="placed" value="Placed">Placed</option>
+                <option name="Not placed" value="Not Placed">Not Placed</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="threeInput threeSubInput">
+            <div class="form-input">
+              <input
+                class="subInput"
+                type="integer"
+                minValue="100"
+                max="100"
+                name="dsa_score"
+                placeholder="DSA Score"
+                required
+              />
+            </div>
+            <div class="form-input">
+              <input
+                class="subInput"
+                type="integer"
+                minValue="100"
+                max="100"
+                name="webD_score"
+                placeholder="Web Development Score"
+                required
+              />
+            </div>
+            <div class="form-input">
+              <input
+                class="subInput"
+                type="integer"
+                minValue="100"
+                max="100"
+                name="react_score"
+                placeholder="React Score"
+                required
+              />
+            </div>
+          </div>
+    
+          <div class="form-input">
+            <input id="submitbutton" type="Submit" value="Add Student" />
+          </div>
+          
+          <!-- <button>Submit</button> -->
+        </form>
+      </div>
+      <div class="list">
+         <h1>List of Students</h1>
+      
+        <div class="card-group">
+          <div class="card">
+           
+            <div class="card-body">
+              <% for(student of students){%>
+                
+                  
+                    <h2 class="card-title"> <%-student.name%></h2>
+                    <h3 class="card-subtitle mb-2 text-muted">Batch:<%-student.batch%></h3>
+                    
+                    <a href="/students/studentDetail/<%= student.id %>" class="card-link">Details</a>
+                   
+                    <br><br>
+                  
+              
+                
+                
+                <%} %>
+
+            </div>
+          </div>
+      </div>
+    </div>
+ 
+</body>
+</html>
