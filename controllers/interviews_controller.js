@@ -32,3 +32,26 @@ module.exports.addInterview=async (req,res)=>{
           }
         }
       
+
+
+      module.exports.interviewDetails = async (req, res) => {
+        
+        try {
+            const interviews = await interview.findOne({ _id: req.params.id })
+            // return res.status(200).json({
+            //   message: "Here is the list of all the Interviews",
+            //   interviews,
+            // });
+            console.log(interviews)
+            return res.render("interviewDetails", {
+              title: "MY page",
+              interview: interviews,
+            });
+          } catch (err) {
+            console.log("error while fetching all the interviews from the DB!", err);
+            return res.status(500).json({
+              message: "error while fetching all the interviews from the DB!",
+            });
+          }
+        };
+        

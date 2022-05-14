@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EditDetail</title>
+  <link rel="stylesheet" href="/css/studentList.css" >
+</head>
+<body>
+  <div class="list form-input">
+    <h2><%=student.name%></h2>
+       <!-- <h2><%=student.email%></h2> -->
+  </div>
+  <div class="updateStatus list"> 
+    <h2 >Status :</h2>
+    <form  action="/students/updateStatus/<%= student.id %>" method="POST">
+      <select class="form-input updateStatus" name="status">
+        <optgroup label="Status" placeholder="Status">
+         
+          <option name="placed" value="Placed"><h3>Placed</h3></option>
+          <option name="Not placed" value="Not Placed"><h3>Not Placed</h3></option>
+        </optgroup>
+      </select>
+      <button type="submit" value="Submit">Update</button>
+    </form>
+  
+</div>
+
+ 
+ 
+
+<div class="form">
+  <form action="/students/updateStudent/<%= student.id %>" method="POST" >
+   
+    <h2>Add Interview</h2>
+    <div >
+      <div class="form-input ">
+        <input
+          class="subInput"
+          type="text"
+          name="company"
+          placeholder="Company Name"
+          required
+        />
+      </div>
+      <div class="form-input">
+        <input
+          
+          type="date"
+          name="date"
+          placeholder="Interview Date"
+          required
+        />
+      </div>
+      <div class="form-input threeSubInput">
+        <select  class="form-input" name="result">
+          <optgroup label="Result">
+            <!-- <option name="" value="0">Result</option> -->
+            <option name="selected" value="Selected">Selected</option>
+            <option name="not_selected" value="Not Selected">
+              Not Selected
+            </option>
+            <option name="on_hold" value="On Hold">On Hold</option>
+            <option name="on_hold" value="On Hold">Didn't Attend</option>
+            <option name="on_hold" value="Interview Pending">
+              Interview Pending
+            </option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-input">
+      <input type="Submit" value="Edit Student" />
+    </div>
+    <div >
+      <div class="cardLinks">
+        <a href="/students/studentsList">Back</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/studentList.css">
+  <title>InterviewDetails</title>
+</head>
+<body>
+  
+<div class="form">
+  <form action="/student/createStudent" method="POST">
+    <div class="form-input">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name: <%= interview.company_name%>"
+        required
+        disabled
+      />
+    </div>
+    <div class="form-input">
+      <input
+        type="text"
+        name="batch"
+        placeholder="Date: <%= interview.date %>"
+        required
+        disabled
+      />
+    </div>
+    <h3>Students Applied for this interview</h3>
+    <%if(interview.students){%> <% for(student of interview.students){%>
+    <div >
+      <div class="form-input ">
+        <input
+   
+          type="text"
+          name="company"
+          placeholder="<%= student.student%>"
+          required
+          disabled
+        />
+      </div>
+
+      <div class="form-input ">
+        <input
+        
+          type="text"
+          name="result"
+          placeholder="<%= student.result %>"
+          disabled
+          required
+        />
+      </div>
+      <br><br>
+    </div>
+    <%}%> <%} %>
+
+
+        <a href="/interviews/interviewList">Back</a>
+  
+
+  </form>
+</div>
+
+</body>
+</html>

@@ -26,3 +26,8 @@ body{
   .list{
     text-align: center;
   }
+
+  .updateStatus{
+    display: flex;
+    justify-content: center;
+  }
