@@ -9,4 +9,6 @@ router.get('/interviewList',interviews.interviews)
 router.post('/interviewList',interviews.addInterview)
 router.get('/interviewDetails/:id',interviews.interviewDetails)
 
+
+
 module.exports=router
