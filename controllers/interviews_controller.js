@@ -1,8 +1,13 @@
 const interview=require('../models/interview')
 
 module.exports.interviews=async (req,res)=>{
+  if(req.isAuthenticated()){
     interviews= await interview.find({});
     res.render('interviewList',{interviews:interviews})
+  }else{
+    res.redirect("/")
+  }
+
 }
 
 module.exports.addInterview=async (req,res)=>{

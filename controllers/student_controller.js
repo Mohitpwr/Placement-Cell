@@ -1,12 +1,17 @@
 const student=require('../models/student')
 const Interview=require('../models/interview')
 module.exports.studentsList=async(req,res)=>{
+  if(req.isAuthenticated()){
     const students=await student.find({});
 
     res.render('studentList',{
         students:students
     });
    
+  }else{
+    res.redirect('/')
+  }
+    
 }
 
 module.exports.addStudent=(req,res)=>{
