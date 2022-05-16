@@ -14,15 +14,19 @@ module.exports.studentsList=async(req,res)=>{
     
 }
 
-module.exports.addStudent=(req,res)=>{
-
-    student.create(req.body,(err,student)=>{
-             if(err){
-                 console.log('error in adding student',err);
-             }
-          
-           
-    })
+module.exports.addStudent=async (req,res)=>{
+ user= await student.findOne({ email: req.body.email })
+ if(!user){
+  student.create(req.body,(err,student)=>{
+    if(err){
+        console.log('error in adding student',err);
+    }
+    req.flash("success", "Student Added Successfully")
+  
+})
+ }else{
+   req.flash("error","Student is already added")
+ }
     res.redirect('back');
 
 }
@@ -71,7 +75,7 @@ module.exports.updateStudent=async (req,res)=>{
            if(err){
                console.log(err)
            }
-           console.log(update.name)
+      
 
 
            Interview.updateOne(
@@ -98,7 +102,7 @@ module.exports.updateStudent=async (req,res)=>{
           return res.redirect('back')
        }
                
-     
+       req.flash("success", "Student and interview updated Successfully")
 res.redirect('back')
 }
 
@@ -113,6 +117,6 @@ module.exports.updateStatus=(req,res)=>{
             console.log("error in updating status",err)
         }
        })
-  
+       req.flash("success", "Student status updated")
     res.redirect('back')
 }

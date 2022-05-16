@@ -10,7 +10,8 @@ const MongoStore = require("connect-mongo");
 const path = require("path");
 app.use(express.urlencoded())
 app.use(cookieParser())
-
+const flash = require("connect-flash");
+const customMware = require("./confiq/middleware");
 require('./confiq/mongoose')
 
 
@@ -41,6 +42,8 @@ app.use(
   
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(flash());
+  app.use(customMware.setFlash);
 
 app.use(express.static('./assests'))
 //set view engine for rendering views

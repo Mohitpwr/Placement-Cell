@@ -26,13 +26,13 @@ module.exports.addInterview=async (req,res)=>{
                   console.log("cant create interview", err);
                   return res.redirect("back");
                 }
-                // req.flash("success", "Interview Added Successfully");
+                req.flash("success", "Interview Added Successfully");
                 return res.redirect("back");
               }
             );
           } else {
-            console.log("interview is already added");
-            // req.flash("success", "Interview is already added");
+           
+            req.flash("success", "Interview already exists");
             return res.redirect("back");
           }
         }
@@ -43,11 +43,8 @@ module.exports.addInterview=async (req,res)=>{
         
         try {
             const interviews = await interview.findOne({ _id: req.params.id })
-            // return res.status(200).json({
-            //   message: "Here is the list of all the Interviews",
-            //   interviews,
-            // });
-            console.log(interviews)
+            
+           
             return res.render("interviewDetails", {
               title: "MY page",
               interview: interviews,
